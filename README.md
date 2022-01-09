@@ -1,8 +1,10 @@
 # field-guard-trail-RP - v0
 
 ## Description
-This program runs over RPi and takes photos from a camera for N seconds,
-and upload them to the cloud (Dropbox for now).
+This program runs over RPi.
+
+The program takes photos from the connected camera for N seconds,
+and uploads them to the cloud (Dropbox for now).
 
 ## Usage
 
