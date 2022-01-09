@@ -2,23 +2,15 @@ from dropbox import Dropbox
 import dropbox.files as drpfiles
 
 from src.logger.Logger import MyLogger
+from src.config.settings import cloud_conf
 
 
 class DropboxHandler:
     def __init__(self):
         """Initial the attributes"""
-        self.dbx = None
+        self.dbx = Dropbox(cloud_conf['access_token'])
         self.logger = MyLogger()
         self.logger.info('Init Dropbox class')
-
-    def auth(self, access_token: str):
-        """
-        Initial the Dropbox object with the given access token
-        :param access_token:
-        :return:
-        """
-        self.dbx = Dropbox(access_token)
-        self.logger.info('Auth by access token')
 
     def create_folder(self, path):
         """
@@ -28,7 +20,7 @@ class DropboxHandler:
         """
         try:
             self.dbx.files_create_folder_v2(path)
-            self.logger.info('Created new folder {}'.format(path))
+            self.logger.info('Created new folder in Dropbox - {}'.format(path))
         except Exception as e:
             self.logger.error(str(e))
 
