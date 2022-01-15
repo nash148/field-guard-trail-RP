@@ -29,9 +29,6 @@ class ControlManager:
         # Start supplying power to the RPi
         self._rpi_handler.start_power_supply()
 
-        # Start shooting for time_to_shoot seconds
-        self._rpi_handler.start_shooting(camera_conf['time_to_shoot'])
-
         # Open usb socket
         self._rpi_handler.open_usb_socket()
 
