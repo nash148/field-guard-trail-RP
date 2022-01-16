@@ -1,6 +1,12 @@
-from control_manager.ControlManager import ControlManager
-from cloud_handler.DropboxHandler import DropboxHandler
-from logger.Logger import MyLogger
+import sys
+import os
+
+# Set the working directory as PYTHONPATH
+sys.path.append(os.getcwd())
+
+from src.control_manager.ControlManager import ControlManager
+from src.cloud_handler.DropboxHandler import DropboxHandler
+from src.logger.Logger import MyLogger
 
 logger = MyLogger()
 

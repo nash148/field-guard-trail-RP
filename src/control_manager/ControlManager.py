@@ -1,12 +1,12 @@
 import datetime
 import os
 
-from logger.Logger import MyLogger
-from cloud_handler.CloudHandlerProtocol import CloudHandlerProtocol
-from RPi_handler.RPHandler import GPIOHandler
-from config.settings import camera_conf, files_conf
-from utils.files_utils import move_files_from_cam_ro_rpi, delete_pictures_from_rpi
-from utils.rpi_utils import shutdown_rpi
+from src.logger.Logger import MyLogger
+from src.cloud_handler.CloudHandlerProtocol import CloudHandlerProtocol
+from src.RPi_handler.RPHandler import GPIOHandler
+from src.config.settings import camera_conf, files_conf
+from src.utils.files_utils import move_files_from_cam_ro_rpi, delete_pictures_from_rpi
+from src.utils.rpi_utils import shutdown_rpi
 
 
 class ControlManager:
