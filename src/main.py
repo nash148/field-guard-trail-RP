@@ -1,6 +1,6 @@
-from src.control_manager.ControlManager import ControlManager
-from src.cloud_handler.DropboxHandler import DropboxHandler
-from src.logger.Logger import MyLogger
+from control_manager.ControlManager import ControlManager
+from cloud_handler.DropboxHandler import DropboxHandler
+from logger.Logger import MyLogger
 
 logger = MyLogger()
 
