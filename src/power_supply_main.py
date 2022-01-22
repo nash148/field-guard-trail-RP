@@ -18,7 +18,7 @@ def main():
 
     cloud_handler = DropboxHandler()
     control_manager = ControlManager(cloud_handler)
-    control_manager.start_power_supply()
+    control_manager.start_power_supply(30)
 
 
 if __name__ == '__main__':

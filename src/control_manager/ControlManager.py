@@ -43,12 +43,12 @@ class ControlManager:
 
         if shutdown:
             # Shutdown the RPi
-            #shutdown_rpi()
+            shutdown_rpi()
 
     def start_power_supply(self, time_to_supply: int = None):
         """Start power supply"""
         self._rpi_handler.start_power_supply()
-
+        
         if time_to_supply is not None:
             sleep(time_to_supply)
             self._rpi_handler.stop_power_supply()
