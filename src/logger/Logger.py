@@ -6,9 +6,6 @@ import datetime
 class MyLogger:
     _logger = None
 
-    def __init__(self, logger_type: str):
-        self._logger_type = logger_type
-
     def __new__(cls, *args, **kwargs):
         if cls._logger is None:
             cls._logger = super().__new__(cls, *args, **kwargs)
@@ -23,7 +20,7 @@ class MyLogger:
             if not os.path.isdir(dirname):
                 os.mkdir(dirname)
             fileHandler = logging.FileHandler(
-                dirname + "/log_" + logger_type + '_' + now.strftime("%d-%m-%Y_%H-%M-%S")+".log")
+                dirname + "/log_" + now.strftime("%d-%m-%Y_%H-%M-%S")+".log")
 
             streamHandler = logging.StreamHandler()
 
