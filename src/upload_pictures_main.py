@@ -8,7 +8,7 @@ from src.control_manager.ControlManager import ControlManager
 from src.cloud_handler.DropboxHandler import DropboxHandler
 from src.logger.Logger import MyLogger
 
-logger = MyLogger()
+logger = MyLogger("up")
 
 
 def main():
