@@ -1,0 +1,9 @@
+[Unit]
+Description=RPi power supply service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash ~/field-guard/scripts/run_power_supply_main.sh
+
+[Install]
+WantedBy=single-user.target

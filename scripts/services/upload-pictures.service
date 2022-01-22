@@ -1,0 +1,10 @@
+[Unit]
+Description=Upload pictures service
+After=network.target
+
+[Service]
+type=Simple
+ExecStart=/bin/bash ~/field-guard/scripts/run_upload_pictures_main.sh
+
+[Install]
+WantedBy=multi-user.target
