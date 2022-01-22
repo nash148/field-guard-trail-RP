@@ -4,6 +4,8 @@ echo "Starting setup..."
 
 MAIN_DIR="~/field-guard"
 
+pip3 install -r ../requirenments.txt
+
 # Create the project main directory
 mkdir ~/field-guard
 echo "Created $MAIN_DIR dir"
