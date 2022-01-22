@@ -20,8 +20,8 @@ class ControlManager:
         self._rpi_handler = GPIOHandler()
         self._logger.info('Init ControlManager class')
 
-    def run(self):
-        """Run the whole program flow"""
+    def upload_camera_pictures(self, shutdown: bool = False):
+        """Upload the pictures from the camera to the cloud"""
 
         now = datetime.datetime.now()
         timestamp = now.strftime("%d-%m-%Y_%H-%M-%S")
@@ -41,8 +41,9 @@ class ControlManager:
         # Delete pictures from RPi storage
         #delete_pictures_from_rpi()
 
-        # Shutdown the RPi
-        #shutdown_rpi()
+        if shutdown:
+            # Shutdown the RPi
+            #shutdown_rpi()
 
     def _upload_pics_to_cloud(self, start_timestamp: str):
         """Upload every picture in the pictures folder"""
