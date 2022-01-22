@@ -6,7 +6,7 @@ cloud_conf = dict(
 )
 
 gpio_conf = dict(
-    power_supply_pin='5V',
+    power_supply_pin='GPIO14',
     camera_pin='GPIO2',
     usb_socket_pin='GPIO3'
 )
@@ -16,7 +16,7 @@ camera_conf = dict(
 )
 
 files_conf = dict(
-    camera_pics_path='C:\\Users\\natan\\Desktop\\images\\',
-    RPi_pics_path='C:\\Users\\natan\\Desktop\\Projects\\field-guard\\repositories\\field-guard-trail-RP\\images\\',
+    camera_pics_path='/home/natan/field-test/usb-demo/images/',
+    RPi_pics_path='/home/natan/field-test/temp-images/',
     remote_pics_path='/field-guard/events/'
 )

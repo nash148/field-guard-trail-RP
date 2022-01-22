@@ -26,26 +26,23 @@ class ControlManager:
         now = datetime.datetime.now()
         timestamp = now.strftime("%d-%m-%Y_%H-%M-%S")
 
-        # Start supplying power to the RPi
-        self._rpi_handler.start_power_supply()
-
         # Open usb socket
-        self._rpi_handler.open_usb_socket()
+        #self._rpi_handler.open_usb_socket()
 
         # Move the pictures from camera to the RPi
-        move_files_from_cam_ro_rpi()
+        #move_files_from_cam_ro_rpi()
 
         # Close usb socket
-        self._rpi_handler.close_usb_socket()
+        #self._rpi_handler.close_usb_socket()
 
         # Upload the pictures to the cloud
-        self._upload_pics_to_cloud(timestamp)
+        #self._upload_pics_to_cloud(timestamp)
 
         # Delete pictures from RPi storage
-        delete_pictures_from_rpi()
+        #delete_pictures_from_rpi()
 
         # Shutdown the RPi
-        shutdown_rpi()
+        #shutdown_rpi()
 
     def _upload_pics_to_cloud(self, start_timestamp: str):
         """Upload every picture in the pictures folder"""
