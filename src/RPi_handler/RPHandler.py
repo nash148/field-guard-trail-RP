@@ -22,6 +22,11 @@ class GPIOHandler:
         self._power_supply_pin.on()
         self._logger.info('Turned on the power supply pin')
 
+    def stop_power_supply(self):
+        """Turn off the pin witch supplies the power to the RPi"""
+        self._power_supply_pin.off()
+        self._logger.info('Turned off the power supply pin')
+
     def start_shooting(self, time_to_shoot_sec: int):
         """
         Turns on the camera pin for the given time

@@ -12,13 +12,13 @@ logger = MyLogger()
 
 
 def main():
-    logger.info('################################')
-    logger.info('##          Starting...       ##')
-    logger.info('################################')
+    logger.info('#################################')
+    logger.info('##  Starting pictures main...  ##')
+    logger.info('#################################')
 
     cloud_handler = DropboxHandler()
     control_manager = ControlManager(cloud_handler)
-    control_manager.run()
+    control_manager.upload_camera_pictures()
 
 
 if __name__ == '__main__':
