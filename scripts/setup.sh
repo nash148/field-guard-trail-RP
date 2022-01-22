@@ -33,6 +33,10 @@ sudo cp ./services/power-supply.service /etc/systemd/system/
 sudo cp ./services/upload-pictures.service /etc/systemd/system/
 echo "Copy the services to systemd dir"
 
+echo "Change servics permissions"
+sudo chmod +x /etc/systemd/system/power-supply.service
+sudo chmod +x /etc/systemd/system/upload-pictures.service
+
 sudo systemctl enable power-supply
 echo "Enable power-supply service"
 
