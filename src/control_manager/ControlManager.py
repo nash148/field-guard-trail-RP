@@ -31,7 +31,7 @@ class ControlManager:
         self._rpi_handler.open_usb_socket()
 
         # Move the pictures from camera to the RPi
-        #move_files_from_cam_ro_rpi()
+        move_files_from_cam_ro_rpi()
 
         # Close usb socket
         self._rpi_handler.close_usb_socket()

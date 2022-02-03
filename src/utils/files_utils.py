@@ -9,7 +9,8 @@ logger = MyLogger()
 def move_files_from_cam_ro_rpi():
     """Move pictures from camera to the RPi"""
     logger.info('Moving pictures from camera to RPi storage')
-    for curr_file in os.listdir(files_conf['camera_pics_path']):
+    files = os.listdir(files_conf['camera_pics_path'])
+    for curr_file in files:
         logger.info('Moving {} from camera to RPi'.format(curr_file))
         shutil.move(files_conf['camera_pics_path'] + curr_file, files_conf['RPi_pics_path'])
 
