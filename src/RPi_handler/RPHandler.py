@@ -5,6 +5,9 @@ from src.logger.Logger import MyLogger
 from src.config.settings import gpio_conf
 
 
+RESET_CAMERA_SLEEP_SEC = 1
+
+
 class GPIOHandler:
     """
     Handles the relevant GPIOs
@@ -15,6 +18,7 @@ class GPIOHandler:
         self._power_supply_pin = LED(gpio_conf['power_supply_pin'])
         self._camera_pin = LED(gpio_conf['camera_pin'])
         self._usb_socket_pin = LED(gpio_conf['usb_socket_pin'])
+        self._reset_camera_pin = LED(gpio_conf['reset_camera_pin'])
         self._logger.info('Init GPOIHandler class')
 
     def start_power_supply(self):
@@ -48,3 +52,11 @@ class GPIOHandler:
         """Tuns off the usb socket pin"""
         self._usb_socket_pin.off()
         self._logger.info('Turned off the usb socket pin')
+
+    def reset_camera(self):
+        """Reset the camera"""
+        self._reset_camera_pin.on()
+        self._logger.info('Turn on reset camera pin')
+        sleep(RESET_CAMERA_SLEEP_SEC)
+        self._reset_camera_pin.off()
+        self._logger.info('Turn off reset camera pin')
