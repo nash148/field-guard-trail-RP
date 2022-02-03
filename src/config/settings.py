@@ -6,9 +6,10 @@ cloud_conf = dict(
 )
 
 gpio_conf = dict(
-    power_supply_pin='GPIO14',
+    power_supply_pin='GPIO4',
     camera_pin='GPIO2',
-    usb_socket_pin='GPIO4'
+    usb_socket_pin='GPIO5',
+    reset_camera_pin='GPIO15'
 )
 
 camera_conf = dict(

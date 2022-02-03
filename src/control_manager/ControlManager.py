@@ -54,6 +54,9 @@ class ControlManager:
         if time_to_supply is not None:
             sleep(time_to_supply)
             self._rpi_handler.stop_power_supply()
+        else:  # Run forever
+            while True:
+                sleep(1)
 
     def _upload_pics_to_cloud(self, start_timestamp: str):
         """Upload every picture in the pictures folder"""

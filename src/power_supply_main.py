@@ -13,12 +13,12 @@ logger = MyLogger("power")
 
 def main():
     logger.info('#################################')
-    logger.info('##  Starting power main...  ##')
+    logger.info('##   Starting power main...    ##')
     logger.info('#################################')
 
     cloud_handler = DropboxHandler()
     control_manager = ControlManager(cloud_handler)
-    control_manager.start_power_supply(10)
+    control_manager.start_power_supply()
 
 
 if __name__ == '__main__':
