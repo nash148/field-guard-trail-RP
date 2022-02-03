@@ -29,13 +29,15 @@ class ControlManager:
 
         # Open usb socket
         self._rpi_handler.open_usb_socket()
-        sleep(3)
 
         # Move the pictures from camera to the RPi
         #move_files_from_cam_ro_rpi()
 
         # Close usb socket
         self._rpi_handler.close_usb_socket()
+
+        # Reset camera
+        self._rpi_handler.reset_camera()
 
         # Upload the pictures to the cloud
         self._upload_pics_to_cloud(timestamp)

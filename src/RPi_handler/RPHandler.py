@@ -15,7 +15,7 @@ class GPIOHandler:
     def __init__(self):
         """Init the attributes"""
         self._logger = MyLogger()
-        self._power_supply_pin = LED(gpio_conf['power_supply_pin'])
+        self._power_supply_pin = None
         self._camera_pin = LED(gpio_conf['camera_pin'])
         self._usb_socket_pin = LED(gpio_conf['usb_socket_pin'])
         self._reset_camera_pin = LED(gpio_conf['reset_camera_pin'])
@@ -23,6 +23,7 @@ class GPIOHandler:
 
     def start_power_supply(self):
         """Turn on the pin witch supplies the power to the RPi"""
+        self._power_supply_pin = LED(gpio_conf['power_supply_pin'])
         self._power_supply_pin.on()
         self._logger.info('Turned on the power supply pin')
 
