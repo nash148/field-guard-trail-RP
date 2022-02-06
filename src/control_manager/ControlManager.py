@@ -1,5 +1,6 @@
 import datetime
 import os
+from time import sleep
 
 from src.logger.Logger import MyLogger
 from src.cloud_handler.CloudHandlerProtocol import CloudHandlerProtocol
@@ -27,28 +28,29 @@ class ControlManager:
         timestamp = now.strftime("%d-%m-%Y_%H-%M-%S")
 
         # Open usb socket
-        #self._rpi_handler.open_usb_socket()
+        self._rpi_handler.open_usb_socket()
+        sleep(3)
 
         # Move the pictures from camera to the RPi
         #move_files_from_cam_ro_rpi()
 
         # Close usb socket
-        #self._rpi_handler.close_usb_socket()
+        self._rpi_handler.close_usb_socket()
 
         # Upload the pictures to the cloud
-        #self._upload_pics_to_cloud(timestamp)
+        self._upload_pics_to_cloud(timestamp)
 
         # Delete pictures from RPi storage
         #delete_pictures_from_rpi()
 
         if shutdown:
             # Shutdown the RPi
-            #shutdown_rpi()
+            shutdown_rpi()
 
     def start_power_supply(self, time_to_supply: int = None):
         """Start power supply"""
         self._rpi_handler.start_power_supply()
-
+        
         if time_to_supply is not None:
             sleep(time_to_supply)
             self._rpi_handler.stop_power_supply()

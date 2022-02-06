@@ -1,12 +1,16 @@
-!#/bin/bash
+#!/bin/bash
 
 echo "Starting setup..."
 
 MAIN_DIR="~/field-guard"
 
+<<<<<<< HEAD
 # pip install
 echo "pip install..."
 sudo pip install -r ../requirenments.txt
+=======
+pip3 install -r ../requirenments.txt
+>>>>>>> f64e09073b5dd2ba246144bf3f7906c3c9919146
 
 # Create the project main directory
 mkdir ~/field-guard
@@ -40,6 +44,10 @@ sudo cp ./services/mnt-volume.automount /etc/systemd/system/
 sudo cp ./services/mnt-volume.mount /etc/systemd/system/
 
 echo "Copy the services to systemd dir"
+
+echo "Change servics permissions"
+sudo chmod +x /etc/systemd/system/power-supply.service
+sudo chmod +x /etc/systemd/system/upload-pictures.service
 
 sudo systemctl enable power-supply
 echo "Enable power-supply service"
