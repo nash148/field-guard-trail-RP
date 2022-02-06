@@ -4,13 +4,9 @@ echo "Starting setup..."
 
 MAIN_DIR="~/field-guard"
 
-<<<<<<< HEAD
 # pip install
 echo "pip install..."
-sudo pip install -r ../requirenments.txt
-=======
-pip3 install -r ../requirenments.txt
->>>>>>> f64e09073b5dd2ba246144bf3f7906c3c9919146
+sudo pip3 install -r ../requirenments.txt
 
 # Create the project main directory
 mkdir ~/field-guard
