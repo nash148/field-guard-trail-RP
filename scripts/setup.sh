@@ -4,7 +4,9 @@ echo "Starting setup..."
 
 MAIN_DIR="~/field-guard"
 
-pip3 install -r ../requirenments.txt
+# pip install
+echo "pip install..."
+sudo pip3 install -r ../requirenments.txt
 
 # Create the project main directory
 mkdir ~/field-guard
@@ -28,9 +30,15 @@ sudo chmod +x ~/field-guard/scripts/run_power_supply_main.sh
 sudo chmod +x ~/field-guard/scripts/run_upload_pictures_main.sh
 echo "Changed the scripts poermissions"
 
-# Setup the power supply service
+sudo mkdir /mnt/volume
+echo "Created mnt folder"
+
+# Setup services
 sudo cp ./services/power-supply.service /etc/systemd/system/
 sudo cp ./services/upload-pictures.service /etc/systemd/system/
+sudo cp ./services/mnt-volume.automount /etc/systemd/system/
+sudo cp ./services/mnt-volume.mount /etc/systemd/system/
+
 echo "Copy the services to systemd dir"
 
 echo "Change servics permissions"
@@ -42,4 +50,8 @@ echo "Enable power-supply service"
 
 sudo systemctl enable upload-pictures
 echo "Enable upload-pictures service"
+
+sudo systemctl enable --now  mnt-volume.mount mnt-volume.automount
+echo "Enable auto mount services"
+
 
