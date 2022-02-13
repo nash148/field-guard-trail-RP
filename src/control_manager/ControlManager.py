@@ -10,6 +10,10 @@ from src.utils.files_utils import move_files_from_cam_ro_rpi, delete_pictures_fr
 from src.utils.rpi_utils import shutdown_rpi
 
 
+def run_mount_command():
+    cmd = 'sudo mount /dev/sda1 /mnt/volume'
+    os.system(cmd)
+
 class ControlManager:
     """
     The bug manager
@@ -30,6 +34,12 @@ class ControlManager:
         # Open usb socket
         self._rpi_handler.open_usb_socket()
 
+        sleep(7)
+        self._logger.info('Run mount command')
+        run_mount_command()
+
+        sleep(2)
+
         # Move the pictures from camera to the RPi
         move_files_from_cam_ro_rpi()
 
@@ -43,7 +53,7 @@ class ControlManager:
         self._upload_pics_to_cloud(timestamp)
 
         # Delete pictures from RPi storage
-        #delete_pictures_from_rpi()
+        delete_pictures_from_rpi()
 
         if shutdown:
             # Shutdown the RPi
