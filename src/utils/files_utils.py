@@ -28,7 +28,7 @@ def get_cam_drive_device_name() -> str:
 def move_files_from_dir_to_dir(src_path: str, dst_path: str):
     """Move files from dir to dir"""
     logger.info(f'Move files from \'{src_path}\' to \'{dst_path}\'')
-    for curr_file in src_path:
+    for curr_file in os.listdir(src_path):
         logger.info(f'Moving {curr_file}')
         shutil.move(src_path + curr_file, dst_path)
 

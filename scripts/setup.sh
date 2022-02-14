@@ -30,6 +30,9 @@ sudo chmod +x /home/pi/field-guard/scripts/run_power_supply_main.sh
 sudo chmod +x /home/pi/field-guard/scripts/run_upload_pictures_main.sh
 echo "Changed the scripts permissions"
 
+sudo chown -R pi.pi /home/pi/field-guard/
+echo "Change own to pi.pi"
+
 sudo mkdir /mnt/volume
 echo "Created mnt folder"
 
