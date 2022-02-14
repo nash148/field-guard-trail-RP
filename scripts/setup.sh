@@ -28,7 +28,7 @@ echo "Copied the relevant scripts"
 # Change the permissions of the scripts
 sudo chmod +x /home/pi/field-guard/scripts/run_power_supply_main.sh
 sudo chmod +x /home/pi/field-guard/scripts/run_upload_pictures_main.sh
-echo "Changed the scripts poermissions"
+echo "Changed the scripts permissions"
 
 sudo mkdir /mnt/volume
 echo "Created mnt folder"
@@ -36,22 +36,12 @@ echo "Created mnt folder"
 # Setup services
 sudo cp ./services/power-supply.service /etc/systemd/system/
 sudo cp ./services/upload-pictures.service /etc/systemd/system/
-sudo cp ./services/mnt-volume.automount /etc/systemd/system/
-sudo cp ./services/mnt-volume.mount /etc/systemd/system/
-
 echo "Copy the services to systemd dir"
 
-echo "Change servics permissions"
-sudo chmod +x /etc/systemd/system/power-supply.service
-sudo chmod +x /etc/systemd/system/upload-pictures.service
-
-sudo systemctl enable power-supply
+sudo systemctl enable power-supply.service
 echo "Enable power-supply service"
 
-sudo systemctl enable upload-pictures
+sudo systemctl enable upload-pictures.service
 echo "Enable upload-pictures service"
-
-sudo systemctl enable --now  mnt-volume.mount mnt-volume.automount
-echo "Enable auto mount services"
 
 
