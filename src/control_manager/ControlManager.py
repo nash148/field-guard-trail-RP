@@ -18,7 +18,7 @@ class ControlManager:
         """Initial the attributes"""
         self._logger = MyLogger()
         self._gpio_handler = GpioHandler()
-        self._files_handler = FilesHandler()
+        self._files_handler = FilesHandler(self._gpio_handler)
         self._logger.info('Init ControlManager class')
 
     def upload_camera_pictures(self, cloud_handler: CloudHandlerProtocol, shutdown: bool = False):

@@ -17,8 +17,8 @@ INTERNET_CONNECTION_TIMEOUT = 30
 
 class FilesHandler:
     """Handles everything related to files"""
-    def __init__(self):
-        self._gpio_handler = GpioHandler()
+    def __init__(self, gpio_handler: GpioHandler):
+        self._gpio_handler = gpio_handler
         self._logger = MyLogger()
 
         # Init config attributes
