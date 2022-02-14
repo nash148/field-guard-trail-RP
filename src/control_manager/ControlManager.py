@@ -36,7 +36,10 @@ class ControlManager:
         # Delete pictures from RPi storage
         self._files_handler.delete_images_from_rpi()
 
+        self._logger.info('Done!!')
+
         if shutdown:
+            sleep(1)
             # Shutdown the RPi
             shutdown_rpi()
 

@@ -13,6 +13,7 @@ def wait_for_internet_connection(timeout: int):
         try:
             url_request.urlopen('https://google.com', timeout=1)
             logger.info('Internet is available')
+            break
         except url_error.URLError:
             logger.info('There is no internet connection')
 

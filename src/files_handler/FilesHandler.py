@@ -62,7 +62,7 @@ class FilesHandler:
 
     def delete_images_from_rpi(self):
         """Delete the images from the temp dir"""
-        self._logger('Delete all images from RPi temp directory')
+        self._logger.info('Delete all images from RPi temp directory')
         delete_files_from_dir(self._rpi_tmp_path)
 
     def _get_cloud_dir_path(self):
