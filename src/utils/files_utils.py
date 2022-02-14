@@ -21,8 +21,8 @@ def get_cam_drive_device_name() -> str:
     if len(drive_devices) < 1:
         raise Exception('Cannot find any drive device')
 
-    logger.info(f'Found drive device named {drive_devices[1]}')
-    return "/dev/" + drive_devices[1]
+    logger.info(f'Found drive device named {drive_devices[0]}')
+    return "/dev/" + drive_devices[0]
 
 
 def move_files_from_dir_to_dir(src_path: str, dst_path: str):
