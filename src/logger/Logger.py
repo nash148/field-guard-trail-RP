@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 import datetime
 
 
@@ -11,6 +12,7 @@ class MyLogger:
             cls._logger = super().__new__(cls, *args, **kwargs)
             cls._logger = logging.getLogger("crumbs")
             cls._logger.setLevel(logging.DEBUG)
+
             formatter = logging.Formatter(
                 '%(asctime)s \t [%(levelname)s | %(filename)s:%(lineno)s] > %(message)s')
 
@@ -22,7 +24,7 @@ class MyLogger:
             fileHandler = logging.FileHandler(
                 dirname + "/log_" + now.strftime("%d-%m-%Y_%H-%M-%S")+".log")
 
-            streamHandler = logging.StreamHandler()
+            streamHandler = logging.StreamHandler(sys.stdout)
 
             fileHandler.setFormatter(formatter)
             streamHandler.setFormatter(formatter)

@@ -8,7 +8,7 @@ from src.config.settings import gpio_conf
 RESET_CAMERA_SLEEP_SEC = 1
 
 
-class GPIOHandler:
+class GpioHandler:
     """
     Handles the relevant GPIOs
     """
@@ -29,6 +29,7 @@ class GPIOHandler:
 
     def stop_power_supply(self):
         """Turn off the pin witch supplies the power to the RPi"""
+        self._power_supply_pin = LED(gpio_conf['power_supply_pin'])
         self._power_supply_pin.off()
         self._logger.info('Turned off the power supply pin')
 

@@ -19,5 +19,6 @@ camera_conf = dict(
 files_conf = dict(
     camera_pics_path='/mnt/volume/DCIM/100MEDIA/',
     RPi_pics_path='/home/pi/field-guard/temp-images/',
-    remote_pics_path='/field-guard/events/'
+    remote_pics_path='/field-guard/events/',
+    mount_point_path='/mnt/volume'
 )
