@@ -1,5 +1,6 @@
 import urllib.request as url_request
 import urllib.error as url_error
+from time import sleep
 
 from src.logger.Logger import MyLogger
 
@@ -16,5 +17,6 @@ def wait_for_internet_connection(timeout: int):
             break
         except url_error.URLError:
             logger.info('There is no internet connection')
+            sleep(1)
 
 
