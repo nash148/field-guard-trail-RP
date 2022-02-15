@@ -20,6 +20,7 @@ class FilesHandler:
     def __init__(self, gpio_handler: GpioHandler):
         self._gpio_handler = gpio_handler
         self._logger = MyLogger()
+        self._camera_device_name = None
 
         # Init config attributes
         self._camera_images_path = files_conf['camera_pics_path']
@@ -41,6 +42,8 @@ class FilesHandler:
 
         # Move the pictures from camera to the RPi
         move_files_from_dir_to_dir(self._camera_images_path, self._rpi_tmp_path)
+
+        self._umount_camera_drive()
 
         # Close usb socket
         self._gpio_handler.close_usb_socket()
@@ -73,14 +76,27 @@ class FilesHandler:
 
     def _mount_camera_drive(self):
         """Mount the camera drive into mount point path"""
-        device = get_cam_drive_device_name()
+        self._camera_device_name = get_cam_drive_device_name()
 
-        self._logger.info(f'Try to mount {device}')
+        self._logger.info(f'Try to mount {self._camera_device_name}')
 
-        cmd = f'mount -t vfat -o umask=0022,gid=1000,uid=1000 {device} {self._mount_point_path}'
+        cmd = f'mount -t vfat -o umask=0022,gid=1000,uid=1000 {self._camera_device_name} {self._mount_point_path}'
         res = os.system(cmd)
 
         if res != 0:
             raise Exception('Cannot mount camera drive')
 
         self._logger.info('Camera drive has mounted successfully')
+
+    def _umount_camera_drive(self):
+        """Umount the camera drive"""
+
+        self._logger.info('Umount camera device')
+        if self._camera_device_name is None:
+            raise Exception('Try umount None device name')
+
+        cmd = f'sudo umount {self._camera_device_name}'
+        res = os.system(cmd)
+
+        if res != 0:
+            raise Exception('Error while umount camera device')
