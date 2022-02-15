@@ -18,7 +18,7 @@ def main():
 
     cloud_handler = DropboxHandler()
     control_manager = ControlManager()
-    control_manager.upload_camera_pictures(cloud_handler)
+    control_manager.upload_camera_pictures(cloud_handler, True)
 
 
 if __name__ == '__main__':

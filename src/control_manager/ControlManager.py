@@ -27,21 +27,21 @@ class ControlManager:
         # Move the images from the camera to the RPi
         self._files_handler.move_files_from_cam_to_rpi()
 
-        # Reset camera
-        self._gpio_handler.reset_camera()
-
         # Upload the pictures to the cloud
         self._files_handler.upload_images_to_cloud(cloud_handler)
 
         # Delete pictures from RPi storage
         self._files_handler.delete_images_from_rpi()
 
+        self._gpio_handler.reset_camera()
+
         self._logger.info('Done!!')
 
         if shutdown:
-            sleep(1)
+            sleep(10)
             # Shutdown the RPi
-            shutdown_rpi()
+            self._gpio_handler.stop_power_supply()
+            #shutdown_rpi()
 
     def start_power_supply(self, time_to_supply: int = None):
         """Start power supply"""
