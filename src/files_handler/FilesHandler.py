@@ -12,7 +12,7 @@ from src.utils.connection import wait_for_internet_connection
 
 TIME_TO_WAIT_BEFORE_MOUNT = 7
 TIME_TO_WAIT_AFTER_MOUNT = 2
-INTERNET_CONNECTION_TIMEOUT = 30
+INTERNET_CONNECTION_TIMEOUT = 90
 
 
 class FilesHandler:
