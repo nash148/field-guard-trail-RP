@@ -30,7 +30,7 @@ def move_files_from_dir_to_dir(src_path: str, dst_path: str):
     logger.info(f'Move files from \'{src_path}\' to \'{dst_path}\'')
     for curr_file in os.listdir(src_path):
         logger.info(f'Moving {curr_file}')
-        shutil.move(src_path + curr_file, dst_path)
+        shutil.move(os.path.join(src_path, curr_file), os.path.join(dst_path, curr_file))
 
 
 def delete_files_from_dir(dir_path):
@@ -42,5 +42,6 @@ def delete_files_from_dir(dir_path):
                 os.unlink(file_path)
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
+            logger.info(f'Deleted {file_path}')
         except Exception as e:
             raise Exception('Failed to delete %s. Reason: %s' % (file_path, e))

@@ -23,25 +23,25 @@ class ControlManager:
 
     def upload_camera_pictures(self, cloud_handler: CloudHandlerProtocol, shutdown: bool = False):
         """Upload the pictures from the camera to the cloud"""
+        try:
+            # Delete pictures from RPi storage
+            self._files_handler.delete_images_from_rpi()
 
-        # Move the images from the camera to the RPi
-        self._files_handler.move_files_from_cam_to_rpi()
+            # Move the images from the camera to the RPi
+            self._files_handler.move_files_from_cam_to_rpi()
 
-        # Upload the pictures to the cloud
-        self._files_handler.upload_images_to_cloud(cloud_handler)
+            # Upload the pictures to the cloud
+            self._files_handler.upload_images_to_cloud(cloud_handler)
 
-        # Delete pictures from RPi storage
-        self._files_handler.delete_images_from_rpi()
+            self._gpio_handler.reset_camera()
 
-        self._gpio_handler.reset_camera()
-
-        self._logger.info('Done!!')
-
-        if shutdown:
-            sleep(10)
-            # Shutdown the RPi
-            self._gpio_handler.stop_power_supply()
-            #shutdown_rpi()
+            self._logger.info('Done!!')
+        except Exception as e:
+            self._logger.error(str(e))
+        finally:
+            if shutdown:
+                self._logger.info('Shutting down')
+                self._gpio_handler.stop_power_supply()
 
     def start_power_supply(self, time_to_supply: int = None):
         """Start power supply"""
