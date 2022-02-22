@@ -36,12 +36,12 @@ class ControlManager:
             self._gpio_handler.reset_camera()
 
             self._logger.info('Done!!')
-        except Exception as e:
-            self._logger.error(str(e))
-        finally:
+
             if shutdown:
                 self._logger.info('Shutting down')
                 self._gpio_handler.stop_power_supply()
+        except Exception as e:
+            self._logger.error(str(e))
 
     def start_power_supply(self, time_to_supply: int = None):
         """Start power supply"""
