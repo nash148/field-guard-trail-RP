@@ -19,6 +19,11 @@ class GpioHandler:
         self._camera_pin = LED(gpio_conf['camera_pin'])
         self._usb_socket_pin = LED(gpio_conf['usb_socket_pin'])
         self._reset_camera_pin = LED(gpio_conf['reset_camera_pin'])
+
+        # Debug pins
+        self._startup_pin = LED(gpio_conf['startup_pin'])
+        self._files_transfer_pin = LED(gpio_conf['file_transfer_pin'])
+        self.cloud_upload_pin = LED(gpio_conf['cloud_upload_pin'])
         self._logger.info('Init GPOIHandler class')
 
     def start_power_supply(self):
@@ -62,3 +67,33 @@ class GpioHandler:
         sleep(RESET_CAMERA_SLEEP_SEC)
         self._reset_camera_pin.off()
         self._logger.info('Turn off reset camera pin')
+
+    def open_startup_led(self):
+        """Open startup led"""
+        self._logger.info('Turn on startup led')
+        self._startup_pin.on()
+
+    def close_startup_led(self):
+        """Turn off startup led"""
+        self._logger.info('Turn off startup led')
+        self._startup_pin.off()
+
+    def open_files_transfer_led(self):
+        """Open files transfer led"""
+        self._logger.info('Turn on files transfer led')
+        self._files_transfer_pin.on()
+
+    def close_files_transfer_led(self):
+        """Turn off files transfer led"""
+        self._logger.info('Turn off files transfer led')
+        self._files_transfer_pin.off()
+
+    def open_cloud_upload_led(self):
+        """Open cloud upload led"""
+        self._logger.info('Turn on cloud upload led')
+        self.cloud_upload_pin.on()
+
+    def close_cloud_upload_led(self):
+        """Turn off cloud upload led"""
+        self._logger.info('Turn off cloud upload led')
+        self.cloud_upload_pin.off()

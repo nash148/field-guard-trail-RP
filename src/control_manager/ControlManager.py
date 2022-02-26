@@ -24,14 +24,20 @@ class ControlManager:
     def upload_camera_pictures(self, cloud_handler: CloudHandlerProtocol, shutdown: bool = False):
         """Upload the pictures from the camera to the cloud"""
         try:
+            self._gpio_handler.open_startup_led()
+
             # Delete pictures from RPi storage
             self._files_handler.delete_images_from_rpi()
 
             # Move the images from the camera to the RPi
+            self._gpio_handler.open_files_transfer_led()
             self._files_handler.move_files_from_cam_to_rpi()
+            self._gpio_handler.close_files_transfer_led()
 
             # Upload the pictures to the cloud
+            self._gpio_handler.open_cloud_upload_led()
             self._files_handler.upload_images_to_cloud(cloud_handler)
+            self._gpio_handler.close_cloud_upload_led()
 
             self._gpio_handler.reset_camera()
 

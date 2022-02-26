@@ -9,7 +9,13 @@ gpio_conf = dict(
     power_supply_pin='GPIO4',
     camera_pin='GPIO22',
     usb_socket_pin='GPIO23',
-    reset_camera_pin='GPIO24'
+    reset_camera_pin='GPIO24',
+)
+
+debug_gpio_conf = dict(
+    startup_pin='GPIO5',
+    file_transfer_pin='GPIO6',
+    cloud_upload_pin='GPIO26'
 )
 
 camera_conf = dict(
