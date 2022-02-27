@@ -2,7 +2,7 @@ from time import sleep
 from gpiozero import LED
 
 from src.logger.Logger import MyLogger
-from src.config.settings import gpio_conf
+from src.config.settings import gpio_conf, debug_gpio_conf
 
 
 RESET_CAMERA_SLEEP_SEC = 1
@@ -21,9 +21,9 @@ class GpioHandler:
         self._reset_camera_pin = LED(gpio_conf['reset_camera_pin'])
 
         # Debug pins
-        self._startup_pin = LED(gpio_conf['startup_pin'])
-        self._files_transfer_pin = LED(gpio_conf['file_transfer_pin'])
-        self.cloud_upload_pin = LED(gpio_conf['cloud_upload_pin'])
+        self._startup_pin = LED(debug_gpio_conf['startup_pin'])
+        self._files_transfer_pin = LED(debug_gpio_conf['file_transfer_pin'])
+        self.cloud_upload_pin = LED(debug_gpio_conf['cloud_upload_pin'])
         self._logger.info('Init GPOIHandler class')
 
     def start_power_supply(self):

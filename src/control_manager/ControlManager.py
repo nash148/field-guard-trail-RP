@@ -1,13 +1,8 @@
-import datetime
-import os
 from time import sleep
-from typing import Union
-
 from src.logger.Logger import MyLogger
 from src.cloud_handler.CloudHandlerProtocol import CloudHandlerProtocol
 from src.gpio_handler.GpioHandler import GpioHandler
 from src.files_handler.FilesHandler import FilesHandler
-from src.utils.rpi_utils import shutdown_rpi
 
 
 class ControlManager:
