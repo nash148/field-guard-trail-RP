@@ -1,4 +1,5 @@
 from time import sleep
+import logging
 from src.logger.Logger import MyLogger
 from src.cloud_handler.CloudHandlerProtocol import CloudHandlerProtocol
 from src.gpio_handler.GpioHandler import GpioHandler
@@ -39,6 +40,7 @@ class ControlManager:
             self._logger.info('Done!!')
 
             if shutdown:
+                logging.shutdown()
                 self._logger.info('Shutting down')
                 self._gpio_handler.stop_power_supply()
         except Exception as e:
