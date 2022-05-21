@@ -40,8 +40,8 @@ class ControlManager:
             self._logger.info('Done!!')
 
             if shutdown:
-                logging.shutdown()
                 self._logger.info('Shutting down')
+                logging.shutdown()
                 self._gpio_handler.stop_power_supply()
         except Exception as e:
             self._logger.error(str(e))
